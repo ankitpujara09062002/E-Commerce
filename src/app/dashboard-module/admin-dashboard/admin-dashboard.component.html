@@ -1,0 +1,63 @@
+<div class="container">
+    <h4 class="text-muted">All Product</h4>
+    <div class="row">
+        <div class="col-md-4 col-sm-8 "
+            *ngFor="let data of appProductsData | paginate: { itemsPerPage: 6, currentPage: currentPage };">
+            <div class="shadow-lg p-3 mb-5 cart-hover">
+                <div class="card my-2 border-0">
+                    <img src="{{data.productImage}}" alt="image" style="height: 150px;" />
+                    <div class="card-body">
+                        <div class="d-flex justify-content-start">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        </div>
+                        <p class="d-flex justify-content-end text-muted">{{data.productPrice | currency: 'USD'}}</p>
+                        <h5 class="card-title text-muted text-truncate">{{data.productName}}</h5>
+                        <h6 class="card-title text-muted text-truncate">Lorem Ipsum is simply dummy text of the printing
+                        </h6>
+                    </div>
+                    <button
+                        class="p-3 bg-secondary text-white border-0 d-flex justify-content-center align-items-center"
+                        (click)="editProduct(data)">Edit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<pagination-controls (pageChange)="pageChange($event)"
+    class="d-flex justify-content-center align-items-center"></pagination-controls>
+
+
+
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 mt-5">
+
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Id. </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let element"><button mat-raised-button color="primary"
+                (click)="showDetail(element.id)">Show Detail</button></td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+<mat-paginator #paginatorPageSize [pageSizeOptions]="pageSizes" showFirstLastButtons></mat-paginator>

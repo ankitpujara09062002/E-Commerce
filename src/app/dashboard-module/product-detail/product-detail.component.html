@@ -1,0 +1,85 @@
+<h2 class="text-center text-muted mt-3 mb-3">Product Details</h2>
+<div class="container justify-content-center product-wrapper">
+    <div class="shadow-lg p-3 bg-white rounded">
+        <div class="card product-details border-0">
+            <div class="row">
+                <div class="col-md-4 col-sm-12 my-3">
+                    <img src="{{productDetails.productImage}}" alt="Product" class="responsive" width="300"
+                        height="350">
+                </div>
+                <div class="col-md-8">
+                    <h3 class="text-muted">{{productDetails.productName}}</h3>
+                    <div class="d-flex">
+                        <div>
+                            <p class="text-muted">{{productDetails.productPrice | currency: 'USD'}}</p>
+                        </div>
+                        <div class="text-muted pipe">|</div>
+                        <div>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        </div>
+                    </div>
+                    <p class="text-muted ">Available - <span class="text-success">In stock</span></p>
+                    <p class="text-muted ">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
+                        printer took a galley of type and scrambled it to make a type specimen book.</p>
+                    <p class="text-muted "><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            fill="currentColor" class="bi bi-cart mr-2" viewBox="0 0 16 16">
+                            <path
+                                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                        </svg>Free Shipping</p>
+                    <p class="text-muted "><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            fill="currentColor" class="bi bi-currency-dollar mr-2" viewBox="0 0 16 16">
+                            <path
+                                d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z" />
+                        </svg>EMI option available
+                    </p>
+                    <hr>
+                    <button
+                        class="p-2 bg-secondary text-white border-0 d-flex justify-content-center align-items-center"
+                        (click)="addToCart()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-cart mr-2" viewBox="0 0 16 16">
+                            <path
+                                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                        </svg>{{ addedToCart === true ? 'Go to cart' : 'Add to cart'}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container mt-5">
+    <h4 class="text-muted mb-2">Offer Deals Product</h4>
+    <p class="text-danger" id="time"></p>
+
+    <div class="row">
+        <div class="col-md-4 col-sm-8 " *ngFor="let data of offerDealsProduct">
+            <div class="shadow-lg p-3 mb-5 cart-hover">
+                <div class="card my-2 border-0">
+                    <img src="{{data.productImage}}" alt="image" style="height: 150px;" />
+                    <div class="card-body">
+                        <div class="d-flex justify-content-start">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        </div>
+                        <p class="d-flex justify-content-end text-muted">{{data.productPrice | currency: 'USD'}}</p>
+                        <h5 class="card-title text-muted text-truncate">{{data.productName}}</h5>
+                        <h6 class="card-title text-muted text-truncate">Lorem Ipsum is simply dummy text of the
+                            printing
+                        </h6>
+                    </div>
+                    <button class="p-3 bg-danger text-white border-0 d-flex justify-content-center align-items-center">
+                        50% off</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

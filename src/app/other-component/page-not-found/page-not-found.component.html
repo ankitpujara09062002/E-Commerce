@@ -1,0 +1,4 @@
+<h1>404</h1>
+<p>Oops! Something is wrong.</p>
+<p *ngIf="loggedIn" (click)="navigateToDashboard()" class="navigate">Go To Dashboard Page</p>
+<p *ngIf="!loggedIn" (click)="navigateToLogin()" class="navigate">Go To Login Page</p>
