@@ -1,0 +1,115 @@
+<div class="row no-gutters mt-5">
+    <div class="col-12 col-sm-6 col-md-8">
+        <div class="container justify-content-center product-wrapper">
+            <div class="shadow-lg p-3 mb-5 bg-white rounded" *ngFor="let data of cartProducatDetials, let i=index">
+                <div class="card product-details border-0">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-12 my-3">
+                            <img src="{{data.productImage}}" alt="Product" class="responsive" width="100" height="150">
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="text-muted">{{data.productName}}</h5>
+                            <div class="d-flex mt-3">
+                                <div>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                </div>
+                            </div>
+                            <p class="text-success my-3">In stock</p>
+                            <div class="d-flex mt-3">
+                                <p class="text-muted mr-3 mt-1">Qty:</p>
+                                <input class="input-wrapper" (change)="getCartQty($event, i)" min="1"
+                                    value="{{data.productQty}}" />
+                            </div>
+                            <p class="text-muted my-3">Delivery by, Web Apr 25</p>
+                            <p class="text-danger my-3"
+                                *ngIf="data?.productName === 'Titan' || data?.productName === 'Fastrack' || data?.productName === 'Sonata'">
+                                50% off</p>
+
+                        </div>
+                        <div class="col-md-2 vl">
+                            <p class="text-muted mt-5 text-center">{{data.productPrice | currency: 'USD'}}</p>
+                            <button class="mt-5 remove-btn-wrapper text-truncate" (click)="removeBtn(i)"><svg
+                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-x mr-1" viewBox="0 0 16 16">
+                                    <path
+                                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                                </svg>Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-md-4 col-sm-8">
+        <div class="col-sm-4 product-calculation-wrapper">
+            <div class="product-price-wrapper">
+                <div class="row no-gutters">
+                    <div class="col-12 col-sm-6 col-md-8">
+                        <h5 class="text-muted mt-4 ml-4"><strong>Price Details</strong></h5>
+                        <h5 class="text-muted mt-2 ml-4">Total Price</h5>
+                        <h5 class="text-muted mt-2 ml-4">Tax(5%)</h5>
+                        <h5 class="text-muted mt-2 ml-4">EMI Eligibility</h5>
+                        <h5 class="text-muted mt-2 ml-4">Delivery Charges</h5>
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <h5 class="text-muted mt-4 ml-4">Amount</h5>
+                        <h5 class="text-muted mt-2 ml-4">{{allProductCalculation.totalPrice | currency: 'USD'}}</h5>
+                        <h5 class="text-muted mt-2 ml-4">{{allProductCalculation.tax | currency: 'USD'}}</h5>
+                        <h5 class="text-primary mt-2 ml-4">Details</h5>
+                        <h5 class="text-muted mt-2 ml-4">Free</h5>
+                    </div>
+                </div>
+                <hr class="ml-4 mr-4">
+                <div class="row no-gutters">
+                    <div class="col-12 col-sm-6 col-md-8">
+                        <h5 class="text-muted mt-2 ml-4 mb-2"><strong>Grand Total</strong></h5>
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <h5 class="text-muted mt-2 ml-4 mb-2">{{allProductCalculation.grandTotal | currency: 'USD'
+                            }}</h5>
+                    </div>
+
+                </div>
+                <button class="btn btn-primary mb-3 ml-3 mr-2 place-order-wrapper" (click)="checkout()"> Place order
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="container">
+        <h4 class="text-muted mb-2">Offer Deals Product</h4>
+        <p class="text-danger" id="time"></p>
+
+        <div class="row">
+            <div class="col-md-4 col-sm-8 " *ngFor="let data of offerDealsProduct">
+                <div class="shadow-lg p-3 mb-5 cart-hover">
+                    <div class="card my-2 border-0">
+                        <img src="{{data.productImage}}" alt="image" style="height: 150px;" />
+                        <div class="card-body">
+                            <div class="d-flex justify-content-start">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            </div>
+                            <p class="d-flex justify-content-end text-muted">{{data.productPrice | currency: 'USD'}}</p>
+                            <h5 class="card-title text-muted text-truncate">{{data.productName}}</h5>
+                            <h6 class="card-title text-muted text-truncate">Lorem Ipsum is simply dummy text of the
+                                printing
+                            </h6>
+                        </div>
+                        <button
+                            class="p-3 bg-danger text-white border-0 d-flex justify-content-center align-items-center">
+                            50% off</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

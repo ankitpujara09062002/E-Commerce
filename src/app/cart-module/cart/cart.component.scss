@@ -1,0 +1,76 @@
+.breadcrumb {
+  background-color: #ffffff;
+}
+
+.header-wrapper {
+  margin-top: 7px;
+}
+
+.pipe-wrapper {
+  font-size: 27px;
+  color: #eef0f2;
+}
+
+.active-route {
+  color: #6fb4f2;
+}
+
+.checked {
+  color: #ffa500;
+}
+
+.responsive {
+  width: 70%;
+  max-width: 500px;
+  height: auto;
+}
+
+.btn-wrapper {
+  height: 35px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  width: 45px;
+  background-color: #7fffd4;
+}
+
+.input-wrapper {
+  height: 33px;
+  width: 85px;
+  border: 1px solid #ffffff;
+  background: #f4eded;
+}
+
+.box-shipping-wrapper {
+  border: 1px solid #ffffff;
+  text-align: center;
+  background: #e5f2e5;
+  border-radius: 25px;
+  height: 40px;
+}
+
+.remove-btn-wrapper {
+  height: 35px;
+  border: 1px;
+  border-radius: 5px;
+  width: 90%;
+  max-width: 480px;
+}
+
+.product-calculation-wrapper {
+  max-width: none;
+}
+
+.product-price-wrapper {
+  width: 100%;
+  max-width: 500px;
+  box-shadow: #00000059 0px 5px 15px;
+}
+
+.place-order-wrapper {
+  width: 90%;
+  max-width: 480px;
+}
+
+.vl {
+  border-left: 2px solid #9d9b9b;
+}

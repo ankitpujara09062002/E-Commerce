@@ -1,0 +1,62 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+  <a class="navbar-brand" (click)="dashboardNavigation()">E Commerce</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink='/dashboard/admin' *ngIf="loggedInUserData?.role === 'admin'">Dashboard
+          <span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink='/dashboard/customer' *ngIf="loggedInUserData?.role === 'customer'">Dashboard
+          <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="goToCart()" *ngIf="loggedInUserData?.role === 'customer'">{{cartAmount}}<i
+            class="fa fa-shopping-cart"></i>Cart</a>
+      </li>
+    </ul>
+
+    <input class="search-input" (keyup)="searchProduct($event)" placeholder="Search by product name..."
+      *ngIf="searchInputFlage" />
+
+    <form class="form-inline my-2 my-lg-0">
+      <a class="mr-3" routerLink='/profile' *ngIf="loggedInUserData?.role === 'customer'"> <img
+          src="{{imagePath ? imagePath : '../../../assets/user-image.png'}}" class="profile-img"
+          style="height:30px"></a>
+
+    </form>
+    <img class="mr-3" src="../../../../assets/india.png" style="height:20px" />
+    <button type="button" (click)="logoutBtn()" class="logout-btn" *ngIf="loggedInUserData">Log out</button>
+    <button type="button" class="sign-btn" #popModel data-toggle="modal" data-target="#exampleModal"
+      *ngIf="loggedInUserData === null">Sign in</button>
+
+  </div>
+</nav>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-secondary">
+        <h5 class="modal-title" id="exampleModalLabel"> Sign in </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Sign in for your best experience
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="signBtn()">Sign in</button>
+      </div>
+    </div>
+  </div>
+</div>

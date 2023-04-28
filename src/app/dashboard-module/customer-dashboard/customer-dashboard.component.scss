@@ -1,0 +1,31 @@
+.checked {
+  color: #ffa500;
+}
+
+.container {
+  margin-top: 45px;
+}
+
+.carousels {
+  height: 400px;
+}
+
+.carousel {
+  background: #808080;
+}
+
+.add-container {
+  border: 1px solid;
+  height: 415px;
+  width: 170px;
+  margin-top: 50px;
+  margin-right: 8px;
+  background-image: url("../../../assets/images\ \(1\).jpg");
+  color: #ffffff;
+}
+
+@media only screen and ( max-width: 460px) {
+  .add-container {
+     display: none;
+  }
+}

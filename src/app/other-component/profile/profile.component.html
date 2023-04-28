@@ -1,0 +1,13 @@
+<h2 class="heading text-muted">User Profile Card</h2>
+
+<div class="card mb-4">
+    <img src="{{imagePath ? imagePath :  '../../../assets/user-image.png'}}" style="width:100%">
+    <i class="fa fa-trash-o" *ngIf="imagePath" (click)="remove()"></i>
+    <br><br>
+    <input type="file" #imageInput (change)="getImageUrl($event)" />
+    <br>
+    <button (click)="addImpage()"> {{imagePath ? 'Edit Image' : 'Add Image'}}</button>
+    <h1>{{userDetials?.userName}}</h1>
+    <p>{{userDetials?.email}}</p>
+</div>
+<div class="responsive"></div>

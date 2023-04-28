@@ -1,0 +1,44 @@
+.logout-btn {
+    border: 1px;
+    background: #ff0000;
+    color: #f5deb3;
+    height: 40px;
+    width: 80px;
+    border-radius: 5px;
+}
+
+.nav-link,
+.navbar-brand {
+    color: #ffffff !important;
+}
+
+.profile-img {
+    height: 30px;
+    background: #ffffff;
+    border-radius: 50%;
+}
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.search-input{
+    margin: auto;
+    height: 35px;
+    width: 310px;
+    box-shadow: none;
+    border-radius: 3px;
+    outline: none;
+    border: 1px;
+}
+
+.sign-btn{
+    border-radius: 5px;
+    height: 40px;
+    width: 80px;
+    border: 1px;
+    color: #808080;
+    outline: none;
+}

@@ -1,0 +1,128 @@
+<div class="backdrop"></div>
+
+
+<section class="vh-100">
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-12 col-xl-11">
+                <div class="card text-black" style="border-radius: 25px;">
+                    <div class="card-body p-md-5">
+                        <div class="row justify-content-center">
+                            <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                                <p class="text-center h1 fw-bold mb-4 mx-1 mx-md-4 mt-4">Registration</p>
+
+                                <form class="mx-1 mx-md-4" [formGroup]="registerForm">
+
+                                    <!-- User Name -->
+                                    <div class="d-flex flex-row align-items-center mb-2">
+                                        <div class="form-outline flex-fill mb-0">
+                                            <label class="form-label mb-1" for="form3Example1c">User Name<span class="required">*</span></label>
+                                            <div class="d-flex">
+                                                <div class="password-icon-wrapper">
+                                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                                </div>
+                                                <input type="text" placeholder="User Name" formControlName="userName" id="form3Example4c" class="form-control input-wrapper" />
+                                            </div>
+                                            <div *ngIf="f['userName'].touched && f['userName'].invalid" class="required">
+                                                <div *ngIf="f['userName'].errors && f['userName'].errors['required']">User Name is required.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Email -->
+                                    <div class="d-flex flex-row align-items-center mb-2">
+                                        <div class="form-outline flex-fill mb-0">
+                                            <label class="form-label mb-1" for="form3Example3c">Email<span class="required">*</span></label>
+                                            <div class="d-flex">
+                                                <div class="emial-icon-wrapper">
+                                                    <i class="fa fa-envelope"></i>
+                                                </div>
+                                                <input type="email" placeholder="Email" formControlName="email" id="form3Example3c" class="form-control input-wrapper" />                                         
+                                            </div>
+                                            <div *ngIf="f['email'].touched && f['email'].invalid" class="required">
+                                                <div *ngIf="f['email'].errors && f['email'].errors['required']">Email is required.</div>
+                                                <div *ngIf="f['email'].errors && f['email'].errors['email']">Please, enter valid email address.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Password -->
+                                    <div class="d-flex flex-row align-items-center mb-2">
+                                        <div class="form-outline flex-fill mb-0">
+                                            <label class="form-label mb-1" for="form3Example4c">Password<span class="required">*</span></label>
+                                            <div class="d-flex">
+                                                <div class="password-icon-wrapper">
+                                                    <i class="fa fa-lock"></i>
+                                                </div>
+                                                <input type="password" placeholder="Password" formControlName="password" id="password" class="form-control input-wrapper" />
+                                            </div>
+                                            <div class="float-right d-flex">
+                                                <input type="checkbox" class="float-right mb-2 mr-2" (click)="passwordCheckBox()" />
+                                                <p class="mt-1">Show Password</p>
+                                            </div>
+                                            <div *ngIf="f['password'].touched && f['password'].invalid" class="required">
+                                                <div *ngIf="f['password'].errors && f['password'].errors['required']">Password is required.</div>
+                                                <div *ngIf="f['password'].errors && f['password'].errors['minlength']">Password should be 6 character.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Confirm Password -->
+                                    <div class="d-flex flex-row align-items-center mb-2">
+                                        <div class="form-outline flex-fill mb-0">
+                                            <label class="form-label mb-1" for="form3Example4cd">Confirm Password<span class="required">*</span></label>
+                                            <div class="d-flex">
+                                                <div class="password-icon-wrapper">
+                                                    <i class="fa fa-lock"></i>
+                                                </div>
+                                                <input type="password" placeholder="Confirm Password" formControlName="confirmPassword" id="confirm-password" class="form-control input-wrapper" />
+                                            </div>
+                                            <div class="float-right d-flex">
+                                                <input type="checkbox" class="float-right mb-2 mr-2" (click)="confirmPasswordCheckBox()" />
+                                                <p class="mt-1">Show Password</p>
+                                            </div>
+                                            <div *ngIf="f['confirmPassword'].touched && f['confirmPassword'].invalid" class="required">
+                                                <div *ngIf="f['confirmPassword'].errors && f['confirmPassword'].errors['required']">ConfirmPassword Password is required.</div>
+                                                <div *ngIf="f['confirmPassword'].errors && f['confirmPassword'].errors['confirmedValidator']">Password and Confirm Password must be match.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Role -->
+                                    <div class="d-flex flex-row align-items-center mb-2">
+                                        <div class="form-outline flex-fill mb-0">
+                                            <label class="form-label mb-1" for="form3Example4cd">Role<span class="required">*</span></label>
+                                            <select class="browser-default custom-select" formControlName="role">
+                                                <option value="" selected>Role</option>
+                                                <!-- <option value="admin">Admin</option> -->
+                                                <option value="customer">Customer</option>
+                                            </select>
+                                            <div *ngIf="f['role'].touched && f['role'].invalid" class="required">
+                                                <div *ngIf="f['role'].errors && f['role'].errors['required']">Role is required.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    
+                                    <div class="d-flex mt-3">
+                                        <button type="button" [disabled]="!registerForm.valid" class="btn btn-primary btn-lg mr-2" (click)="onSubmit()">Register</button>
+                                        <button type="button" class="btn btn-primary btn-lg" (click)="logninBtn()">Login</button>
+                                    </div>
+
+                                </form>
+
+                            </div>
+                            <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+
+                                <img src="../../../assets/e-commerce-logo.png"
+                                    class="img-fluid" alt="Sample image">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
